@@ -8,13 +8,14 @@ else{
     console.log("Employee is present.");
 }
 
-// UC3 : Refactored UC2 
+// UC4 : Refactored UC3 Monthly employee wage 
 {
     const IS_PART_TIME = 0;
     const IS_FULL_TIME = 1;
     const PART_TIME_HOURS = 4;
     const FULL_TIME_HOURS = 8;
     const WAGE_PER_HOUR = 20;
+    const NO_OF_WORKING_DAYS = 20;
     function getWorkingHours(employeeCheck) {
         switch (employeeCheck) {
             case IS_PART_TIME:
@@ -25,8 +26,11 @@ else{
                 return 0;
         }
     }
-    let employeeCheck = Math.floor(Math.random() * 10) % 3;
-    let employeeHours = getWorkingHours(employeeCheck);
+    let employeeHours = 0;
+    for (let day = 0; day < NO_OF_WORKING_DAYS; day++) {
+        let employeeCheck = Math.floor(Math.random() * 10) % 3;
+        employeeHours += getWorkingHours(employeeCheck);
+    }
     let employeeWage = employeeHours * WAGE_PER_HOUR;
     console.log("Hours: "+employeeHours+" Employee wage : " + employeeWage);
 } 
